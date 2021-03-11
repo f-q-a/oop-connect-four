@@ -2,11 +2,16 @@ import Game  from './game.js'
 
 let game = undefined;
 
-function updateUi(){
+function updateUi(event){
     if(game === undefined){
         document.getElementById(`board-holder`).classList.add(`is-invisible`);
     }else{
         document.getElementById(`board-holder`).classList.remove(`is-invisible`);
+        if (game.currPlayer === playerTwo) {
+            document.getElementById(event.target.id).setAttribute('class', '.token.red')
+        } else {
+            document.getElementById(event.target.id).setAttribute('class', '.token.black')
+        }
     }
 }
 
@@ -32,7 +37,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     })
 
-
+    document.getElementById(`click-targets`).addEventListener(`click`, event => {
+        game.playInColumn();
+        updateUi();
+    })
 
 
 })

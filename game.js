@@ -3,14 +3,22 @@ export class Game {
     constructor (playerOne, playerTwo) {
         this.nameOne = playerOne;
         this.nameTwo = playerTwo;
-        this.currPlayer = playerOne;
+        this.currPlayer = this.playerOne;
     }
 
     getName () {
         return `${this.nameOne} vs ${this.nameTwo}`;
     }
 
-    playInColumn() {
-
+    playInColumn (event) {
+        event.stopPropagation();
+        if (this.currPlayer === this.playerOne) {
+            this.currPlayer = this.playerTwo;
+        } else  {
+            this.currPlayer = this.playerOne;
+        }
+    
     }
+
+    
 }
