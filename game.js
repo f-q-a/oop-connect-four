@@ -10,14 +10,12 @@ export class Game {
         return `${this.nameOne} vs ${this.nameTwo}`;
     }
 
-    playInColumn (event) {
-        event.stopPropagation();
+    playInColumn () {
         if (this.currPlayer === this.playerOne) {
             this.currPlayer = this.playerTwo;
         } else  {
             this.currPlayer = this.playerOne;
         }
-    
     }
 
     
