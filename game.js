@@ -3,7 +3,7 @@ export class Game {
     constructor (playerOne, playerTwo) {
         this.nameOne = playerOne;
         this.nameTwo = playerTwo;
-        this.currPlayer = this.playerOne;
+        this.currPlayer = this.nameOne;
     }
 
     getName () {
@@ -11,12 +11,12 @@ export class Game {
     }
 
     playInColumn () {
-        if (this.currPlayer === this.playerOne) {
-            this.currPlayer = this.playerTwo;
+        if (this.currPlayer === 1) {
+            this.currPlayer = 2;
         } else  {
-            this.currPlayer = this.playerOne;
+            this.currPlayer = 1;
         }
     }
 
-    
+
 }

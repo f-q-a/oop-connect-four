@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (playerOne.value.length === 0 || playerTwo.value.length === 0) {
             document.getElementById('new-game').disabled = true;
         } else {
-            document.getElementById('new-game').disabled = false; 
+            document.getElementById('new-game').disabled = false;
         }
     }
 
@@ -35,12 +35,14 @@ window.addEventListener('DOMContentLoaded', () => {
         readyPlayer()
     })
 
-    playerOne.addEventListener('keyup', () => {
+    playerTwo.addEventListener('keyup', () => {
         readyPlayer()
     })
 
     document.getElementById(`new-game`).addEventListener(`click`, event => {
-        game = new Game('', '');
+        game = new Game(playerOne.value, playerTwo.value);
+        // console.log(game.playerOne);
+        console.log(game);
         document.getElementById(`new-game`).disabled = true;
         updateUi();
 
