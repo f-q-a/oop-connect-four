@@ -7,8 +7,7 @@ function updateUi(){
         document.getElementById(`board-holder`).classList.add(`is-invisible`);
     }else{
         document.getElementById(`board-holder`).classList.remove(`is-invisible`);
-        console.log(game.currPlayer)
-        if (game.currPlayer === game.playerTwo) {
+        if (game.currPlayer === game.nameTwo) {
             document.getElementById('click-targets').classList.add('red');
             document.getElementById('click-targets').classList.remove('black');
         } else {
