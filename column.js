@@ -1,10 +1,10 @@
 export class Column {
     constructor(){
-        this.columns = [];
-
+        this.col = [null, null, null, null, null, null];
+        
     }
 
     add(currPlayer){
-        
+
     }
 }
