@@ -7,7 +7,7 @@ export class Game {
         this.currPlayer = this.nameOne;
         this.columns = [];
         for (let i = 0; i < 7; i++) {
-            this.columns.push(new Column().col);
+            this.columns.push(new Column());
         }
 
 
@@ -28,8 +28,9 @@ export class Game {
     }
 
     getTokenAt(row, col){
-        let currCol = this.columns[col]
+        let currCol = this.columns[col];
+        return currCol.getTokenAt(row)
     }
-
+    
 
 }

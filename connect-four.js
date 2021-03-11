@@ -48,6 +48,10 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     document.getElementById(`click-targets`).addEventListener(`click`, event => {
+        if (!event.target.id.startsWith('column-')) {
+            return
+        }
+        
         game.playInColumn();
         updateUi();
     })
