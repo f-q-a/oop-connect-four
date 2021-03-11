@@ -1,11 +1,12 @@
-import { Game }  from './game.js'
+import { Game } from './game.js'
 
 let game = undefined;
 
-function updateUi(){
-    if(game === undefined){
+function updateUi() {
+
+    if (game === undefined) {
         document.getElementById(`board-holder`).classList.add(`is-invisible`);
-    }else{
+    } else {
         document.getElementById(`board-holder`).classList.remove(`is-invisible`);
         if (game.currPlayer === game.nameTwo) {
             document.getElementById('click-targets').classList.add('red');
@@ -15,6 +16,28 @@ function updateUi(){
             document.getElementById('click-targets').classList.remove('red');
         }
     }
+
+
+    for (let i = 0; i <= 5; i++) {
+        for (let j = 0; j <= 6; j++) {
+            const square = document.getElementById(`square-${i}-${j}`);
+            square.innerHTML = " ";
+            const playerNumber = game.getTokenAt(i, j);
+            console.log(playerNumber);
+            if (playerNumber === game.nameOne) {
+                const currToken = document.createElement(`div`);
+                currToken.classList.add(`token`);
+                currToken.classList.add(`black`);
+                square.appendChild(currToken);
+            } else if(playerNumber === game.nameTwo){
+                const currToken = document.createElement(`div`);
+                currToken.classList.add(`token`);
+                currToken.classList.add(`red`);
+                square.appendChild(currToken);
+            }
+        }
+    }
+
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const playerOne = document.getElementById('player-1-name');
     const playerTwo = document.getElementById('player-2-name');
 
-    function readyPlayer () {
+    function readyPlayer() {
         if (playerOne.value.length === 0 || playerTwo.value.length === 0) {
             document.getElementById('new-game').disabled = true;
         } else {
@@ -40,19 +63,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById(`new-game`).addEventListener(`click`, event => {
         game = new Game(playerOne.value, playerTwo.value);
-        // console.log(game.playerOne);
-        console.log(game);
+        playerOne.value = ``;
+        playerTwo.value = ``;
         document.getElementById(`new-game`).disabled = true;
         updateUi();
 
     })
 
     document.getElementById(`click-targets`).addEventListener(`click`, event => {
+        let col = 0;
         if (!event.target.id.startsWith('column-')) {
             return
+        } else {
+            col = Number.parseInt(event.target.id[event.target.id.length - 1]);
         }
-        
-        game.playInColumn();
+
+        game.playInColumn(col);
         updateUi();
     })
 

@@ -29,8 +29,9 @@ export class Game {
 
     getTokenAt(row, col){
         let currCol = this.columns[col];
+        console.log(currCol);
         return currCol.getTokenAt(row)
     }
-    
+
 
 }
