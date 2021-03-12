@@ -1,6 +1,7 @@
 import { Game } from './game.js'
 
 let game = undefined;
+let gameName = document.getElementById('game-name');
 
 function updateUi() {
 
@@ -9,8 +10,8 @@ function updateUi() {
     } else {
 
         document.getElementById(`board-holder`).classList.remove(`is-invisible`);
-        
-        const gameName = document.getElementById('game-name');
+
+
         gameName.innerHTML = game.getName();
         console.log(game.getName());
 
@@ -21,7 +22,7 @@ function updateUi() {
             document.getElementById('click-targets').classList.add('black')
             document.getElementById('click-targets').classList.remove('red');
         }
-        
+
     }
 
 
