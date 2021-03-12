@@ -46,36 +46,40 @@ export class Game {
         if(this.winnerNum !== 0){
             return;
         }
-
-        
-        this.columns.forEach(function(el){
-            let newWinColumn = new ColumnWinInspector(el);
-
-            this.winnerNum = newWinColumn.inspect();
-            if (this.winnerNum > 0) {
-                return;
+        for(let i = 0; i < this.columns.length; i++){
+            const col = this.columns[i];
+            const currCol = new ColumnWinInspector(col);
+            const winnerNumber = currCol.inspect();
+            if(winnerNumber == this.nameOne || winnerNumber == this.nameTwo){
+                this.winnerNum = winnerNumber;
+                break;
             }
-        })
+        }
     }
 
     checkForRowWin() {
         if(this.winnerNum !== 0){
             return;
         }
-        
-        let first = this.columns.slice(0, 3);
-        let second = this.columns.slice(1, 4);
-        let third = this.columns.slice(2, 5);
-        let fourth = this.columns.slice(3, 6);
+
+        let first = this.columns.slice(0, 4);
+        let second = this.columns.slice(1, 5);
+        let third = this.columns.slice(2, 6);
+        let fourth = this.columns.slice(3, 7);
         let winArray = [first, second, third, fourth]
 
-        winArray.forEach(function(row){
-            let newWinRow = new RowWinInspector(row);
-            this.winnerNum = newWinRow.inspect();
-            if (this.winnerNum > 0) {
-                return;
+        for(let i = 0; i < winArray.length; i++){
+            const row = winArray[i];
+            const currRow = new RowWinInspector(row);
+
+            const winnerNumber = currRow.inspect();
+            console.log(winnerNumber);
+            if(winnerNumber == this.nameOne || winnerNumber == this.nameTwo){
+                this.winnerNum = winnerNumber;
+                console.log(this.winnerNum);
+                break;
             }
-        })
+        }
     }
 
     playInColumn (index) {
@@ -96,7 +100,6 @@ export class Game {
 
     getTokenAt(row, col){
         let currCol = this.columns[col];
-        console.log(currCol);
         return currCol.getTokenAt(row)
     }
 

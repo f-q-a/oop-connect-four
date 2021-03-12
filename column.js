@@ -1,11 +1,11 @@
 
 
 export class Column {
-    constructor(){
+    constructor() {
         this.tokens = [null, null, null, null, null, null];
     }
 
-    add(currPlayer){
+    add(currPlayer) {
         for (let index = 5; index >= 0; index -= 1) {
             if (this.tokens[index] === null) {
                 this.tokens[index] = currPlayer
@@ -18,7 +18,7 @@ export class Column {
         if (this.tokens[row] === null) {
             return null;
         } else {
-        return this.tokens[row]
+            return this.tokens[row]
         }
     }
 

@@ -4,13 +4,22 @@ export class RowWinInspector {
     }
 
     inspect() {
-        let [first, second, third, fourth] = this.columns
-        for (let i = 0; i < this.columns.length; i++) {
-            if (first[i] === second[i] && second[i] === third[i] && third[i] === fourth[i]) {
-                return first[i]
-            } else {
-                return 0
+        let [first, second, third, fourth] = this.columns;
+
+        for (let i = 0; i < 6 ; i++) {
+
+            let checkFirst = first.getTokenAt(i);
+
+            let checkSecond = second.getTokenAt(i);
+
+            let checkThird = third.getTokenAt(i);
+
+            let checkFourth = fourth.getTokenAt(i);
+
+            if (checkFirst === checkSecond && checkSecond === checkThird && checkThird === checkFourth && checkFirst!== null) {
+                return checkFirst;
             }
         }
+        return 0;
     }
 }

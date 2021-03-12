@@ -13,7 +13,6 @@ function updateUi() {
 
 
         gameName.innerHTML = game.getName();
-        console.log(game.getName());
 
         if (game.currPlayer === game.nameTwo) {
             document.getElementById('click-targets').classList.add('red');
@@ -31,7 +30,6 @@ function updateUi() {
             const square = document.getElementById(`square-${i}-${j}`);
             square.innerHTML = " ";
             const playerNumber = game.getTokenAt(i, j);
-            console.log(playerNumber);
 
             let thisCol = document.getElementById(`column-${j}`)
             if (game.isColumnFull(game.columns[j]) === true) {

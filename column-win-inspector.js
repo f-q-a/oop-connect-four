@@ -1,20 +1,25 @@
-export class ColumnWinInspector{
-    constructor(column){
+export class ColumnWinInspector {
+    constructor(column) {
         this.column = column;
 
     }
-    inspect(){
-        for(let i = 0; i < this.column.length - 4; i++){
-            let tokenOne = this.column[i];
-            let tokenTwo = this.column[i + 1];
-            let tokenThree = this.column[i + 2];
-            let tokenFour = this.column[i + 3];
+    inspect() {
+        for (let i = 0; i <= 2; i++) {
+            let tokenOne = this.column.getTokenAt(i);
 
-            if(tokenOne === tokenTwo && tokenTwo === tokenThree && tokenThree === tokenFour){
+            let tokenTwo = this.column.getTokenAt(i + 1);
+
+            let tokenThree = this.column.getTokenAt(i + 2);
+
+            let tokenFour = this.column.getTokenAt(i + 3);
+
+
+            if (tokenOne === tokenTwo && tokenTwo === tokenThree && tokenThree === tokenFour && tokenFour !== null) {
+
                 return tokenOne;
-            }else{
-                return 0;
             }
         }
+        return 0;
     }
+
 }
