@@ -7,7 +7,13 @@ function updateUi() {
     if (game === undefined) {
         document.getElementById(`board-holder`).classList.add(`is-invisible`);
     } else {
+
         document.getElementById(`board-holder`).classList.remove(`is-invisible`);
+        
+        const gameName = document.getElementById('game-name');
+        gameName.innerHTML = game.getName();
+        console.log(game.getName());
+
         if (game.currPlayer === game.nameTwo) {
             document.getElementById('click-targets').classList.add('red');
             document.getElementById('click-targets').classList.remove('black');
@@ -15,6 +21,7 @@ function updateUi() {
             document.getElementById('click-targets').classList.add('black')
             document.getElementById('click-targets').classList.remove('red');
         }
+        
     }
 
 
@@ -45,7 +52,6 @@ function updateUi() {
             }
         }
     }
-
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -87,6 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         game.playInColumn(col);
+
         updateUi();
     })
 
