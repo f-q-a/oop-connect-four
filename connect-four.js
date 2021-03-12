@@ -24,6 +24,14 @@ function updateUi() {
             square.innerHTML = " ";
             const playerNumber = game.getTokenAt(i, j);
             console.log(playerNumber);
+
+            let thisCol = document.getElementById(`column-${j}`)
+            if (game.isColumnFull(game.columns[j]) === true) {
+                thisCol.classList.add('full');
+            } else {
+                thisCol.classList.remove('full');
+            }
+
             if (playerNumber === game.nameOne) {
                 const currToken = document.createElement(`div`);
                 currToken.classList.add(`token`);

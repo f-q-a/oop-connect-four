@@ -21,4 +21,12 @@ export class Column {
         return this.tokens[row]
         }
     }
+
+    isFull() {
+        if (!this.tokens.includes(null)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

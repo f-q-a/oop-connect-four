@@ -33,5 +33,8 @@ export class Game {
         return currCol.getTokenAt(row)
     }
 
+    isColumnFull(col) {
+        return col.isFull()
+    }
 
 }
